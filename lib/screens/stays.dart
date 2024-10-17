@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:repdun/constants/color.dart';
-import 'package:repdun/screens/home.dart'; // Import Home screen for navigation
 import 'package:repdun/screens/pgduniya.dart';
 import 'package:repdun/widgets/CustomBottomNavBar.dart'; // Make sure this path is correct
 
