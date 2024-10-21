@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:repdun/constants/color.dart';
+import 'package:repdun/screens/repairsdun.dart';
 
 
 
@@ -86,9 +87,15 @@ class Home extends StatelessWidget {
                     Text("Repairs Duniya", 
                     style: TextStyle(fontSize: 20,
                      fontWeight: FontWeight.w800)),
-                    Text(
-                      "View More",
-                      style: TextStyle(decoration: TextDecoration.underline, color: Colors.grey),
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> Repairsdun()));
+                      },
+
+                      child: Text(
+                        "View More",
+                        style: TextStyle(decoration: TextDecoration.underline, color: Colors.grey),
+                      ),
                     ),
                   ],
                 ),

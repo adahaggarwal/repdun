@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:repdun/constants/color.dart';
 import 'package:repdun/screens/pgduniya.dart';
-import 'package:repdun/widgets/CustomBottomNavBar.dart'; // Make sure this path is correct
+import 'package:repdun/widgets/CustomBottomNavBar.dart';
 
 class Stays extends StatefulWidget {
   Stays({Key? key}) : super(key: key);
@@ -28,7 +28,7 @@ class _StaysState extends State<Stays> {
           elevation: 0,
           leading: GestureDetector(
             onTap: () {
-              Navigator.pop(context); // Navigate back to the previous screen
+              Navigator.pop(context); 
             },
             child: Icon(Icons.arrow_back, color: Colors.black),
           ),
