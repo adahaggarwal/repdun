@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:repdun/constants/color.dart';
-import 'package:repdun/widgets/CustomBottomNavBar.dart'; 
+import 'package:repdun/widgets/CustomBottomNavBar.dart';
+import 'package:repdun/widgets/_buildAppBar.dart'; 
 
 class Repairsdun extends StatefulWidget {
   Repairsdun({Key? key}) : super(key: key);
@@ -22,31 +23,7 @@ class _StaysState extends State<Repairsdun> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context); 
-            },
-            child: Icon(Icons.arrow_back, color: Colors.black),
-          ),
-          actions: [
-            _buildIconWithBackground(Icons.group_add_outlined),
-            SizedBox(width: 1), 
-            _buildIconWithBackground(Icons.favorite_border_outlined),
-            SizedBox(width: 1),
-            _buildIconWithBackground(Icons.notifications_active_outlined),
-          ],
-          title: Text(
-            "Repairs Duniya",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
+        appBar: CustomAppBar(title: "Repairs Duniya"),
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Container(
@@ -155,7 +132,7 @@ class _StaysState extends State<Repairsdun> {
                     Text("Washing Machine"),
                   ],
                 ),
-                SizedBox(height: 25),
+                SizedBox(height: 35),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -164,7 +141,7 @@ class _StaysState extends State<Repairsdun> {
                       height: 100,
                       width: 110,
                       decoration: BoxDecoration(
-                        color: yy,
+                        color: lred,
                         borderRadius: BorderRadius.circular(30),
                         
                       ),
@@ -174,7 +151,7 @@ class _StaysState extends State<Repairsdun> {
                       height: 100,
                       width: 110,
                       decoration: BoxDecoration(
-                        color: bb,
+                        color: yy,
                         borderRadius: BorderRadius.circular(30),
                         
                       ),
@@ -184,22 +161,110 @@ class _StaysState extends State<Repairsdun> {
                       height: 100,
                       width: 110,
                       decoration: BoxDecoration(
-                        color: lred,
+                        color: bb,
                         borderRadius: BorderRadius.circular(30),
                         
                       ),
-                      child: Image.asset('assets/images/geyser.png'),
+                      child: Image.asset('assets/images/gyser.png'),
                     ),
                   ],
                 ),
                 SizedBox(height: 10),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text("Table Fan"),
+                    Text("Ceiling Fan"),
+                    Text("Geyser"),
+                  ],
+                ),
+                SizedBox(height: 25),
+
+                SizedBox(height: 35),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Recommended Experts",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 35),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Air Conditioner"),
-                    Text("Refrigerator"),
-                    Text("Washing Machine"),
+                    buildExpertCard('assets/images/electrician.png', bb),
+                    buildExpertCard('assets/images/plumber.png', lred),
                   ],
+                ),
+                SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text("Electrician"),
+                    Text("Plumber"),
+                  ],
+                ),
+                SizedBox(height: 25),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Additional Recommendation",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 25),
+                Container(
+                  height: 197,
+                  width: 355,
+                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: yy,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Buy Appliances",
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                          ),
+                          SizedBox(height: 10),
+                          Text("More offers are waiting\ninside and free\ndelivery also available."),
+                          SizedBox(height: 10),
+                          ElevatedButton(
+                            
+                            onPressed: () {},
+                            child: Text("Shop Now",
+                            style: TextStyle(
+                              color: Colors.white, // Set the text color to white
+                              fontWeight: FontWeight.bold, // Make the text bold
+                            ),),
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(horizontal: 40),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                
+                              ),
+                                backgroundColor:darkGray
+            
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(15),
+                        child: Image.asset('assets/images/buy.png')),
+                    ],
+                  ),
                 ),
                 SizedBox(height: 25),
               ],
@@ -228,6 +293,27 @@ class _StaysState extends State<Repairsdun> {
             color: Colors.black, // Icon color
           ),
         ),
+      ),
+    );
+  }
+
+  Widget buildExpertCard(String imagePath, Color backgroundColor) {
+    return Container(
+      height: 100,
+      width: 160,
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 30, vertical: 4),
+        padding: EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(50),
+        ),
+        child: Image.asset(imagePath),
       ),
     );
   }

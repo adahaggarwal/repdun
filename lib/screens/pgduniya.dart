@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:repdun/constants/color.dart';
-import 'package:repdun/widgets/CustomBottomNavBar.dart'; 
+import 'package:repdun/screens/discover.dart';
+import 'package:repdun/widgets/CustomBottomNavBar.dart';
+import 'package:repdun/widgets/_buildAppBar.dart'; 
 
 class Pgduniya extends StatefulWidget {
   Pgduniya({Key? key}) : super(key: key);
@@ -23,27 +25,7 @@ class _PgduniyaState extends State<Pgduniya> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Icon(Icons.arrow_back, color: Colors.black),
-          ),
-          actions: [
-            _buildIconWithBackground(Icons.group_add_outlined),
-            SizedBox(width: 1),
-            _buildIconWithBackground(Icons.favorite_border_outlined),
-            SizedBox(width: 1),
-            _buildIconWithBackground(Icons.notifications_active_outlined),
-          ],
-          title: Text(
-            "PG Duniya",
-            style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        ),
+        appBar: CustomAppBar(title: "PG Duniya"),
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Container(
@@ -180,7 +162,13 @@ class _PgduniyaState extends State<Pgduniya> {
                 _buildListTile("Multiple Sharing", 3),
                 SizedBox(height: 30),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    try {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Discover()));
+                    } catch (e) {
+                      print('Navigation error: $e'); // Handle the error appropriately
+                    }
+                  },
                   child: Text(
                     "Proceed",
                     style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900, fontSize: 15),
@@ -218,18 +206,5 @@ class _PgduniyaState extends State<Pgduniya> {
     );
   }
 
-  Widget _buildIconWithBackground(IconData icon) {
-    return Padding(
-      padding: const EdgeInsets.all(3.0),
-      child: Material(
-        shape: CircleBorder(),
-        elevation: 3,
-        color: Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Icon(icon, color: Colors.black),
-        ),
-      ),
-    );
-  }
+ 
 }

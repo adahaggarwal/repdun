@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:repdun/constants/color.dart';
 import 'package:repdun/screens/pgduniya.dart';
 import 'package:repdun/widgets/CustomBottomNavBar.dart';
+import 'package:repdun/widgets/_buildAppBar.dart';
 
 class Stays extends StatefulWidget {
   Stays({Key? key}) : super(key: key);
@@ -23,31 +24,7 @@ class _StaysState extends State<Stays> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context); 
-            },
-            child: Icon(Icons.arrow_back, color: Colors.black),
-          ),
-          actions: [
-            _buildIconWithBackground(Icons.group_add_outlined),
-            SizedBox(width: 1), // Space between icons
-            _buildIconWithBackground(Icons.favorite_border_outlined),
-            SizedBox(width: 1), // Space between icons
-            _buildIconWithBackground(Icons.notifications_active_outlined),
-          ],
-          title: Text(
-            "Stays Duniya",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
+        appBar: CustomAppBar(title: "Stays Duniya"),
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Container(

@@ -8,3 +8,4 @@ const Color lred = Color(0xFFFFF5F6);
 const Color bb = Color(0xFFEEFAFB);
 const Color darkGray = Color(0xFF363636);
 
+const Color pblue = Color(0xFF0000FF);
