@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:repdun/screens/filters.dart';
 //import 'package:repdun/constants/color.dart';
 import 'package:repdun/widgets/CustomBottomNavBar.dart';
 import 'package:repdun/widgets/_buildAppBar.dart';
@@ -16,7 +17,7 @@ class Pgresults extends StatefulWidget {
 }
 
 class _PgduniyaState extends State<Pgresults> {
-  int _selectedIndex = 0; // For the Bottom Navigation Bar
+  int _selectedIndex = 0;
   int? selectedTileIndex;
 
   void _onItemTapped(int index) {
@@ -96,7 +97,11 @@ class _PgduniyaState extends State<Pgresults> {
                     ],
                   ),
                 ),
-                SortAndFilterWidget(onSortPressed: (){}, onFilterPressed: (){})
+                SortAndFilterWidget(onSortPressed: (){
+                  _showSortBottom();
+                }, onFilterPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Filters()));
+                })
 
                 
               ],
@@ -108,6 +113,48 @@ class _PgduniyaState extends State<Pgresults> {
           onItemTapped: _onItemTapped,
         ),
       ),
+    );
+  }
+
+  void _showSortBottom(){
+    showModalBottomSheet(
+      context: context, 
+      isScrollControlled: true,
+      builder: (BuildContext context){
+        return FractionallySizedBox(
+          heightFactor: 0.6,
+          child: Container(
+            child: Column(
+              children: [
+                _buildListTile("What's New",1),
+                _buildListTile("Highly demanded ( HURRY UP ! )",2),
+                _buildListTile("Discount",3),
+                _buildListTile("Price- Low- High",4),
+                _buildListTile("Price- High to Low",5),
+                _buildListTile("Well furnished",6),
+                _buildListTile("Customer ratings",7),
+                _buildListTile("Availability", 8)
+
+              ],
+            ),
+
+          ),
+        );
+      }
+    );
+  }
+
+  Widget _buildListTile(String title, int index) {
+    return ListTile(
+      title: Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+      trailing: selectedTileIndex == index ? Icon(Icons.check, color: Colors.green) : null,
+      onTap: () {
+        setState(() {
+          selectedTileIndex = index;
+        });
+      },
+      tileColor: const Color.fromARGB(255, 255, 255, 255),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
     );
   }
 

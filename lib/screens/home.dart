@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:repdun/constants/color.dart';
+import 'package:repdun/screens/pgduniya.dart';
 import 'package:repdun/screens/repairsdun.dart';
 
 
@@ -276,15 +277,21 @@ class Home extends StatelessWidget {
                         ),
                         child: Image.asset('assets/images/hrent.png'),
                       ),
-                      Container(
-                        height: 90,
-                        width: 100,
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: yy,
-                          borderRadius: BorderRadius.circular(20)
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.push(context,MaterialPageRoute(builder: (context)=>Pgduniya()));
+
+                        },
+                        child: Container(
+                          height: 90,
+                          width: 100,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: yy,
+                            borderRadius: BorderRadius.circular(20)
+                          ),
+                          child: Image.asset('assets/images/pg.png'),
                         ),
-                        child: Image.asset('assets/images/pg.png'),
                       ),
                       Container(
                         height: 90,
@@ -304,7 +311,11 @@ class Home extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                   Text("House Rent"),
-                  Text("Paying Guest"),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Pgduniya()));
+                    },
+                    child: Text("Paying Guest")),
                   Text("Commercial"),
                 ],),
                 SizedBox(height: 30,),
