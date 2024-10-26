@@ -34,7 +34,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
 
-// Reusable IconWithBackground Widget
+
 class IconWithBackground extends StatelessWidget {
   final IconData icon;
 
@@ -47,9 +47,9 @@ class IconWithBackground extends StatelessWidget {
       child: Material(
         shape: CircleBorder(),
         elevation: 3,
-        color: Colors.white, // Background color
+        color: Colors.white, 
         child: Padding(
-          padding: const EdgeInsets.all(8.0), // Adjusts the size of the circle
+          padding: const EdgeInsets.all(8.0), 
           child: Icon(
             icon,
             color: Colors.black,
