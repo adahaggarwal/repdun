@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:repdun/constants/color.dart';
 import 'package:repdun/widgets/_buildAppBar.dart';
 import 'package:repdun/widgets/headText.dart';
+import 'package:repdun/widgets/outlinedbtn.dart';
+import 'package:repdun/widgets/slotbtn.dart';
+
 
 
 class Roomdetails extends StatefulWidget {
@@ -129,7 +133,7 @@ class _RoomdetailsState extends State<Roomdetails> {
 
               SizedBox(height: 20,),
               Container(
-                 padding: EdgeInsets.all(20),
+                 padding: EdgeInsets.symmetric(vertical: 20,horizontal: 15),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   
@@ -141,7 +145,7 @@ class _RoomdetailsState extends State<Roomdetails> {
                 child: Column(
                   children: [
                     Row(children: [
-                      Text("Total Availability"),
+                      Headtext(text: "Total Availability", fontSize: 15,),
                       Spacer(),
                       GestureDetector(
                         onTap: (){
@@ -150,14 +154,51 @@ class _RoomdetailsState extends State<Roomdetails> {
                         child: Icon(
                           Icons.calendar_month_outlined),
                       ),
-                      Text(
-                        selectedDate!=null ? "${selectedDate}/${selectedDate!.month}/${selectedDate!.year}"
-                        : "Date"
+                      SizedBox(width: 10,),
+                      Flexible(
+                        child: Text(
+                          selectedDate!=null ? "${selectedDate}/${selectedDate!.month}/${selectedDate!.year}"
+                          : "Date",
+                          style: TextStyle(fontSize: 12),
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ],
+                    ),
+                    SizedBox(height: 5,),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text("Check And Book Availability",
+                      style: TextStyle(
+                        color: Colors.grey
+                        ),
+                      )
+                    ),
+                    Wrap(
+                      spacing: 8.0,
+                      runSpacing: 8.0,
+                      children: [
+                        Slotbtn(slott:"4:30 PM"),
+                        Slotbtn(slott:"5:00 PM"),
+                        Slotbtn(slott:"5:30 PM"),
+                        Slotbtn(slott:"6:00 PM"),
+                        Slotbtn(slott:"6:30PM"),
+                        Slotbtn(slott:"7:00 PM"),
+                      ],
                     )
+
                   ],
                 ),
+              ),
+              SizedBox(height: 25,),
+              Container(
+                width: 400,
+                height: 50,
+                child: CustomOutlinedButton(text: "Book Appointment", 
+                backgroundColor: darkGray,
+                borderColor: Colors.black,
+                textColor: Colors.white,
+                onPressed: (){}),
               )
             ],
           ),

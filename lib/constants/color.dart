@@ -9,3 +9,4 @@ const Color bb = Color(0xFFEEFAFB);
 const Color darkGray = Color(0xFF363636);
 
 const Color pblue = Color(0xFF0000FF);
+const Color slotcol = Color(0xFF49C510);

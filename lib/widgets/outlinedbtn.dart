@@ -9,6 +9,7 @@ class CustomOutlinedButton extends StatelessWidget {
   final double elevation;
   final FontWeight fontWeight;
   final Widget? leadingIcon; 
+  final Color backgroundColor;
 
   const CustomOutlinedButton({
     Key? key,
@@ -19,6 +20,7 @@ class CustomOutlinedButton extends StatelessWidget {
     this.textColor = Colors.black,
     this.borderRadius = 5.0,
     this.elevation = 10.0,
+    this.backgroundColor = Colors.white,
     this.fontWeight = FontWeight.w700,
   }) : super(key: key);
 
@@ -28,8 +30,10 @@ class CustomOutlinedButton extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 10),
       child: OutlinedButton(
         onPressed: onPressed, 
+        
         style: OutlinedButton.styleFrom(
           side: BorderSide(color: borderColor),
+          backgroundColor: backgroundColor,
           elevation: elevation,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius),
