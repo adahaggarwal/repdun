@@ -5,6 +5,7 @@ class Headtext extends StatelessWidget {
   final double fontSize;
   final FontWeight fontWeight;
   final Alignment alignment;
+  final Color tcol;
 
   const Headtext({
     Key? key,
@@ -12,6 +13,7 @@ class Headtext extends StatelessWidget {
     this.fontSize = 20.0,
     this.fontWeight = FontWeight.w900,
     this.alignment = Alignment.centerLeft,
+    this.tcol = Colors.black
   }) : super(key: key);
 
   @override
@@ -23,6 +25,7 @@ class Headtext extends StatelessWidget {
         style: TextStyle(
           fontSize: fontSize,
           fontWeight: fontWeight,
+          color: tcol
         ),
       ),
     );

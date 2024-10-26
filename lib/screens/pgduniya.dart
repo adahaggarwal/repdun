@@ -62,7 +62,8 @@ class _PgduniyaState extends State<Pgduniya> {
                     decoration: InputDecoration(
                       hintText: "Search",
                       prefixIcon: Icon(Icons.search),
-                      suffixIcon: Icon(Icons.arrow_drop_down),
+                      suffixIcon: Container(
+                        child: Icon(Icons.arrow_drop_down)),
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
                     ),
                   ),

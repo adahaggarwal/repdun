@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:repdun/constants/color.dart';
+import 'package:repdun/screens/appointments.dart';
 import 'package:repdun/widgets/_buildAppBar.dart';
 import 'package:repdun/widgets/headText.dart';
 import 'package:repdun/widgets/outlinedbtn.dart';
@@ -198,12 +199,57 @@ class _RoomdetailsState extends State<Roomdetails> {
                 backgroundColor: darkGray,
                 borderColor: Colors.black,
                 textColor: Colors.white,
-                onPressed: (){}),
+                onPressed: (){
+                  _showDialog(context);
+                }),
               )
             ],
           ),
         ),
       ),
     );
+  }
+
+  void _showDialog(BuildContext context){
+    showDialog(context: context,
+    builder: (BuildContext context){
+      return AlertDialog(
+        backgroundColor: Colors.white,
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset('assets/images/tick.png'),
+            SizedBox(height:29,),
+            Align(
+              alignment: Alignment.center,
+              child: Text("Book Appointment", 
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 18,
+                fontWeight: FontWeight.w600
+              ),
+              ),
+            ),
+            SizedBox(height: 20,),
+
+            Text("Customer ID: 12345670000"),
+            SizedBox(height: 20,),
+
+            Container(
+              width: 200,
+              child: CustomOutlinedButton(text: "View", onPressed: (){
+                Navigator.push(context, 
+                MaterialPageRoute(builder: (context)=> Appointments()));
+              })
+              ),
+              SizedBox(height: 20,),
+            Text("+Explore More", style: TextStyle(
+              decoration: TextDecoration.underline
+            ),)
+          ],
+        ),
+        
+      );
+    });
   }
 }
