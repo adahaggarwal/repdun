@@ -2,47 +2,77 @@ import 'package:flutter/material.dart';
 import 'package:repdun/widgets/_buildAppBar.dart';
 import 'package:repdun/widgets/headText.dart';
 
-class Appointments extends StatelessWidget{
+class Appointments extends StatefulWidget {
+
+
+  @override
+  State<Appointments> createState() => _AppointmentsState();
+}
+
+class _AppointmentsState extends State<Appointments> {
+  String? selv = "request";
 
   @override
   Widget build(BuildContext context) {
- 
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CustomAppBar(title: "Appointments"),
       body: SingleChildScrollView(
         child: Padding(
-          padding:const EdgeInsets.all(25.0),
+          padding: const EdgeInsets.all(25.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Material(
-                elevation: 5,
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-                child: TextField(
-                  
-                  decoration: InputDecoration(
-                    hintText: "Search stays by customer ID or owner name",
-                    border: InputBorder.none,
-                    prefixIcon: Icon(Icons.search,color: Colors.grey,),
-                    hintStyle: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 12)
-                  )
+              Container(
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(color: Colors.grey.shade300, width: 1.0),
+                  ),
                 ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selv = "request";
+                        });
+                      },
+                      child: Text("Requests"),
+                    ),
+                    GestureDetector(
+                      onTap: (){
+                        setState(() {
+                          selv = "ongoing";
+                        });
+                      },
+                      child: Text("Ongoing")),
+                  ],
+                ),
+                
               ),
-              SizedBox(height: 30,),
-              Headtext(text: "Scheduled appointment status"),
-              Text("Ongoing appointments: ( Total -1 )", style: TextStyle(
-                color: Colors.grey
-              ),)
-            ],
+              Expanded(
+                flex: 3,
+                child: Container(
+                  child: Column(
+                   crossAxisAlignment: CrossAxisAlignment.start,
 
+                    children: [
+                      if (selv=="request")...[
+                        Card(
+                          child: Row(
+
+                          ),
+                        )
+                      ]
+
+                    ],
+                  ),
+                ))
+            ],
           ),
         ),
-      ) ,
-      
+      ),
     );
   }
 }
