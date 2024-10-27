@@ -12,7 +12,7 @@ class Appointments extends StatelessWidget{
       appBar: CustomAppBar(title: "Appointments"),
       body: SingleChildScrollView(
         child: Padding(
-          padding:const EdgeInsets.all(16.0),
+          padding:const EdgeInsets.all(25.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
