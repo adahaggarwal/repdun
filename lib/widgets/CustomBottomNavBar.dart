@@ -40,7 +40,7 @@ class CustomBottomNavBar extends StatelessWidget {
       ],
       selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
       unselectedItemColor: const Color.fromARGB(255, 130, 129, 129),
-      showUnselectedLabels: false,
+      showUnselectedLabels: true,
     );
   }
 }

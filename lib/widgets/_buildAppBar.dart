@@ -13,7 +13,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       leading: Icon(Icons.menu, color: Colors.black),
       actions: [
-        IconWithBackground(icon: Icons.group_add_outlined),
+        
         SizedBox(width: 1),
         IconWithBackground(icon: Icons.favorite_border_outlined),
         SizedBox(width: 1),

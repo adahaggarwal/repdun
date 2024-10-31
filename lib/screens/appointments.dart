@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:repdun/widgets/_buildAppBar.dart';
-import 'package:repdun/widgets/headText.dart';
 
 class Appointments extends StatefulWidget {
 

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:repdun/constants/color.dart';
 import 'package:repdun/screens/discover.dart';
 import 'package:repdun/widgets/CustomBottomNavBar.dart';
-import 'package:repdun/widgets/_buildAppBar.dart'; 
+import 'package:repdun/widgets/_buildAppBar.dart';
+import 'package:repdun/widgets/outlinedbtn.dart'; 
 
 class Pgduniya extends StatefulWidget {
   Pgduniya({Key? key}) : super(key: key);
@@ -12,13 +13,31 @@ class Pgduniya extends StatefulWidget {
 }
 
 class _PgduniyaState extends State<Pgduniya> {
-  int _selectedIndex = 0; // For the Bottom Navigation Bar
+  int _selectedIndex = 0; 
   int? selectedTileIndex;
+  int? _selectedButtonIndex; 
+  int ? profind;
+
+  void _onButtonPressed(int index) { //gender 
+    setState(() {
+      _selectedButtonIndex = index; 
+    });
+  }
+  void profselected(int index){
+    setState(() {
+      profind=index; // profession
+      
+    });
+  }
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  bool _isProceedEnabled() {
+    return _selectedButtonIndex != null && profind != null;
   }
 
   @override
@@ -36,20 +55,23 @@ class _PgduniyaState extends State<Pgduniya> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    OutlinedButton(
-                      onPressed: () {},
-                      child: Text("Male", style: TextStyle(color: Colors.black)),
-                      style: OutlinedButton.styleFrom(side: BorderSide(color: Colors.grey)),
+                    CustomOutlinedButton(
+                      text: "Male",
+                      onPressed: () => _onButtonPressed(0),
+                      borderRadius: 20,
+                      isSelected: _selectedButtonIndex == 0,
                     ),
-                    OutlinedButton(
-                      onPressed: () {},
-                      child: Text("Female", style: TextStyle(color: Colors.black)),
-                      style: OutlinedButton.styleFrom(side: BorderSide(color: Colors.grey)),
+                    CustomOutlinedButton(
+                      text: "Female",
+                      onPressed: () => _onButtonPressed(1),
+                      borderRadius: 20,
+                      isSelected: _selectedButtonIndex == 1,
                     ),
-                    OutlinedButton(
-                      onPressed: () {},
-                      child: Text("Others", style: TextStyle(color: Colors.black)),
-                      style: OutlinedButton.styleFrom(side: BorderSide(color: Colors.grey)),
+                    CustomOutlinedButton(
+                      text: "Colive",
+                      onPressed: () => _onButtonPressed(2),
+                      borderRadius: 20,
+                      isSelected: _selectedButtonIndex == 2,
                     ),
                   ],
                 ),
@@ -62,9 +84,9 @@ class _PgduniyaState extends State<Pgduniya> {
                     decoration: InputDecoration(
                       hintText: "Search",
                       prefixIcon: Icon(Icons.search),
-                      suffixIcon: Container(
-                        child: Icon(Icons.arrow_drop_down)),
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                      suffixIcon: Container(child: Icon(Icons.arrow_drop_down)),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30)),
                     ),
                   ),
                 ),
@@ -78,7 +100,8 @@ class _PgduniyaState extends State<Pgduniya> {
                       hintText: "Search Landmark and Area",
                       prefixIcon: Icon(Icons.pin_drop_outlined),
                       suffixIcon: Icon(Icons.send),
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30)),
                     ),
                   ),
                 ),
@@ -100,40 +123,40 @@ class _PgduniyaState extends State<Pgduniya> {
                   ),
                 ),
                 SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Wrap(
+                  alignment: WrapAlignment.start,
+                  spacing: -15.0, // Horizontal space between buttons
+                  runSpacing: 5.0, // Vertical space between lines
                   children: [
-                    OutlinedButton(
-                      onPressed: () {},
-                      child: Text("Student", style: TextStyle(color: Colors.black)),
-                      style: OutlinedButton.styleFrom(side: BorderSide(color: Colors.grey)),
+                    CustomOutlinedButton(
+                      text: "Student",
+                      onPressed: () => profselected(3),
+                      borderRadius: 20,
+                      isSelected: profind == 3,
                     ),
-                    OutlinedButton(
-                      onPressed: () {},
-                      child: Text("Working", style: TextStyle(color: Colors.black)),
-                      style: OutlinedButton.styleFrom(side: BorderSide(color: Colors.grey)),
+                    CustomOutlinedButton(
+                      text: "Working",
+                      onPressed: () => profselected(4),
+                      borderRadius: 20,
+                      isSelected: profind == 4,
                     ),
-                    OutlinedButton(
-                      onPressed: () {},
-                      child: Text("Non-Working", style: TextStyle(color: Colors.black)),
-                      style: OutlinedButton.styleFrom(side: BorderSide(color: Colors.grey)),
+                    CustomOutlinedButton(
+                      text: "Non-Working",
+                      onPressed: () => profselected(5),
+                      borderRadius: 20,
+                      isSelected: profind == 5,
                     ),
-                  ],
-                ),
-                SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    OutlinedButton(
-                      onPressed: () {},
-                      child: Text("Delivery Boy", style: TextStyle(color: Colors.black)),
-                      style: OutlinedButton.styleFrom(side: BorderSide(color: Colors.grey)),
+                    CustomOutlinedButton(
+                      text: "Delivery Boy",
+                      onPressed: () => profselected(6),
+                      borderRadius: 20,
+                      isSelected: profind == 6,
                     ),
-                    SizedBox(width: 8),
-                    OutlinedButton(
-                      onPressed: () {},
-                      child: Text("Entrepreneur", style: TextStyle(color: Colors.black)),
-                      style: OutlinedButton.styleFrom(side: BorderSide(color: Colors.grey)),
+                    CustomOutlinedButton(
+                      text: "Entrepreneur",
+                      onPressed: () => profselected(7),
+                      borderRadius: 20,
+                      isSelected: profind == 7,
                     ),
                   ],
                 ),
@@ -163,20 +186,26 @@ class _PgduniyaState extends State<Pgduniya> {
                 _buildListTile("Multiple Sharing", 3),
                 SizedBox(height: 30),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: _isProceedEnabled() ? () {
                     try {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Discover()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Discover()));
                     } catch (e) {
                       print('Navigation error: $e'); // Handle the error appropriately
                     }
-                  },
+                  } : null, // Disable button if conditions are not met
                   child: Text(
                     "Proceed",
-                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900, fontSize: 15),
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w900,
+                        fontSize: 15),
                   ),
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 140, vertical: 18),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 140, vertical: 18),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
                     backgroundColor: darkGray,
                   ),
                 ),
@@ -206,6 +235,4 @@ class _PgduniyaState extends State<Pgduniya> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
     );
   }
-
- 
 }

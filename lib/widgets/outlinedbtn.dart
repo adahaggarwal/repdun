@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:repdun/constants/color.dart';
 
 class CustomOutlinedButton extends StatelessWidget {
   final String text;
@@ -10,6 +11,7 @@ class CustomOutlinedButton extends StatelessWidget {
   final FontWeight fontWeight;
   final Widget? leadingIcon; 
   final Color backgroundColor;
+  final bool isSelected; // New parameter for selected state
 
   const CustomOutlinedButton({
     Key? key,
@@ -22,6 +24,7 @@ class CustomOutlinedButton extends StatelessWidget {
     this.elevation = 10.0,
     this.backgroundColor = Colors.white,
     this.fontWeight = FontWeight.w700,
+    this.isSelected = false, // Default is unselected
   }) : super(key: key);
 
   @override
@@ -29,26 +32,28 @@ class CustomOutlinedButton extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10),
       child: OutlinedButton(
-        onPressed: onPressed, 
-        
+        onPressed: onPressed,
         style: OutlinedButton.styleFrom(
           side: BorderSide(color: borderColor),
-          backgroundColor: backgroundColor,
+          backgroundColor: isSelected ? darkGray : backgroundColor,
           elevation: elevation,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius),
           ),
         ),
-        child: Row( 
+        child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (leadingIcon != null) ...[ 
+            if (leadingIcon != null) ...[
               leadingIcon!,
-              SizedBox(width: 8), 
+              SizedBox(width: 8),
             ],
             Text(
               text,
-              style: TextStyle(color: textColor, fontWeight: fontWeight),
+              style: TextStyle(
+                color: isSelected ? Colors.white : textColor,
+                fontWeight: fontWeight,
+              ),
             ),
           ],
         ),
