@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:repdun/widgets/CustomBottomNavBar.dart';
+
 import 'package:repdun/screens/home.dart';
-import 'package:repdun/widgets/_buildAppBar.dart'; // Import the new custom widgets
+
 
 void main() {
   runApp(const MyApp());
@@ -38,9 +38,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: title),
       body: Home(), 
-      bottomNavigationBar: CustomBottomNavBar(selectedIndex: 0),
     );
   }
 }
