@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:repdun/screens/discover.dart';
+import 'package:repdun/screens/appointments.dart';
+
 import 'package:repdun/screens/home.dart';
+import 'package:repdun/screens/pgduniya.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   final int selectedIndex;
@@ -18,14 +20,18 @@ class CustomBottomNavBar extends StatelessWidget {
         destination = Home();
         break;
       case 1:
-        destination = Discover();
+        destination = Pgduniya();
         break;
+      case 2:
+        destination = Appointments();
+      case 3:
+        destination = Appointments();
    
       default:
         return;
     }
 
-    Navigator.pushReplacement(
+    Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => destination),
     );

@@ -17,8 +17,7 @@ class Discover extends StatefulWidget {
 class _DiscoverState extends State<Discover> {
   
   int? selectedTileIndex;
-  double _currentSliderValue = 5000; // Initialize with a default value
-
+  double _currentSliderValue = 5000; 
   void _onItemTapped(int index) {
     setState(() {
     

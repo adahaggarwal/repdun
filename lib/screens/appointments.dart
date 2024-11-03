@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-
 import 'package:repdun/widgets/_buildAppBar.dart';
+import 'package:repdun/widgets/delDialog.dart';
 
 class Appointments extends StatefulWidget {
-  final DateTime selectedDate;
-  final String selectedTime;
-  final String imageAsset;
+  final DateTime? selectedDate;
+  final String? selectedTime;
+  final String? imageAsset;
 
   const Appointments({
     Key? key,
-    required this.selectedDate,
-    required this.selectedTime,
-    required this.imageAsset,
+    this.selectedDate,
+    this.selectedTime,
+    this.imageAsset,
   }) : super(key: key);
 
   @override
@@ -19,11 +19,24 @@ class Appointments extends StatefulWidget {
 }
 
 class _AppointmentsState extends State<Appointments> {
+  List<Appointment> appointments = []; // List of appointments
   String? selv = "request";
 
   @override
+  void initState() {
+    super.initState();
+    // Initialize the list with some sample appointments
+    appointments.add(Appointment(imageAsset: widget.imageAsset, date: widget.selectedDate, time: widget.selectedTime));
+  }
+
+  void deleteAppointment(Appointment appointment) {
+    setState(() {
+      appointments.remove(appointment); // Remove the appointment from the list
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // Define screen width and height for responsiveness
     final screenWidth = MediaQuery.of(context).size.width;
     final isSmallScreen = screenWidth < 600;
 
@@ -83,12 +96,15 @@ class _AppointmentsState extends State<Appointments> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   if (selv == "request") ...[
-                    AppointmentCard(
-                      imageAsset: widget.imageAsset,
-                      date: widget.selectedDate,
-                      time: widget.selectedTime,
+                    ...appointments.map((appointment) => AppointmentCard(
+                      appointment: appointment,
                       isSmallScreen: isSmallScreen,
-                    ),
+                      onDelete: () {
+                        Deldialog.show(context, onConfirm: () {
+                          deleteAppointment(appointment); // Delete the appointment
+                        });
+                      },
+                    )),
                   ],
                   if (selv == "ongoing") ...[
                     Card(
@@ -108,18 +124,28 @@ class _AppointmentsState extends State<Appointments> {
   }
 }
 
-class AppointmentCard extends StatelessWidget {
-  final String imageAsset;
-  final DateTime date;
-  final String time;
-  final bool isSmallScreen;
+class Appointment {
+  final String? imageAsset;  
+  final DateTime? date;      
+  final String? time;        
 
-  const AppointmentCard({
-    Key? key,
+  Appointment({
     required this.imageAsset,
     required this.date,
     required this.time,
+  });
+}
+
+class AppointmentCard extends StatelessWidget {
+  final Appointment appointment;  
+  final bool isSmallScreen;
+  final VoidCallback onDelete;
+
+  const AppointmentCard({
+    Key? key,
+    required this.appointment,
     required this.isSmallScreen,
+    required this.onDelete,
   }) : super(key: key);
 
   @override
@@ -140,24 +166,22 @@ class AppointmentCard extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Image.asset(
-                    imageAsset,
+                    appointment.imageAsset ?? 'assets/images/plumber.png', 
                     width: isSmallScreen ? 80 : 120,
                     height: isSmallScreen ? 80 : 120,
                     fit: BoxFit.cover,
                   ),
                 ),
                 const SizedBox(width: 16),
-           
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
-                          Icon(Icons.calendar_today_outlined, 
-                            color: Colors.amber,
-                            size: isSmallScreen ? 16 : 20,
-                          ),
+                          Icon(Icons.calendar_today_outlined,
+                              color: Colors.amber,
+                              size: isSmallScreen ? 16 : 20),
                           const SizedBox(width: 8),
                           Text(
                             'Appointment Requested',
@@ -174,15 +198,15 @@ class AppointmentCard extends StatelessWidget {
                           Icon(Icons.calendar_month, size: isSmallScreen ? 14 : 16, color: Colors.grey),
                           const SizedBox(width: 4),
                           Text(
-                            '${date.day}-${date.month}-${date.year}',
-                            style: TextStyle(color: Colors.grey[600], fontSize: isSmallScreen ? 12 : 14),
+                            appointment.date != null ? '${appointment.date!.day}-${appointment.date!.month}-${appointment.date!.year}' : 'No Date Provided',
+                            style: TextStyle(color: Colors.grey[600], fontSize: isSmallScreen ? 8 : 10),
                           ),
                           const SizedBox(width: 16),
                           Icon(Icons.access_time, size: isSmallScreen ? 14 : 16, color: Colors.grey),
                           const SizedBox(width: 4),
                           Text(
-                            time,
-                            style: TextStyle(color: Colors.grey[600], fontSize: isSmallScreen ? 12 : 14),
+                            appointment.time ?? 'No Time Provided',
+                            style: TextStyle(color: Colors.grey[600], fontSize: isSmallScreen ? 8 : 10),
                           ),
                         ],
                       ),
@@ -193,7 +217,6 @@ class AppointmentCard extends StatelessWidget {
             ),
           ),
           Divider(height: 1),
-          // Adjust Action Button icon sizes for small screens
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -211,7 +234,7 @@ class AppointmentCard extends StatelessWidget {
               ),
               IconButton(
                 icon: Icon(Icons.delete_outline, size: isSmallScreen ? 20 : 24),
-                onPressed: () {},
+                onPressed: onDelete, // Call onDelete when the delete button is pressed
               ),
             ],
           ),

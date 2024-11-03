@@ -12,11 +12,11 @@ class Stays extends StatefulWidget {
 }
 
 class _StaysState extends State<Stays> {
-  int _selectedIndex = 0; // Index for the bottom navigation bar
+  
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+
     });
   }
 
@@ -216,7 +216,7 @@ class _StaysState extends State<Stays> {
           ),
         ),
         bottomNavigationBar: CustomBottomNavBar(
-          selectedIndex: _selectedIndex,
+          selectedIndex: 0,
   
         ),
       ),

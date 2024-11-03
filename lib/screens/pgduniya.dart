@@ -216,7 +216,7 @@ class _PgduniyaState extends State<Pgduniya> {
           ),
         ),
         bottomNavigationBar: CustomBottomNavBar(
-          selectedIndex: _selectedIndex,
+          selectedIndex: 1,
       
         ),
       ),

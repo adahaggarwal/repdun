@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:repdun/constants/color.dart';
 import 'package:repdun/screens/appointments.dart';
+import 'package:repdun/widgets/CustomBottomNavBar.dart';
 import 'package:repdun/widgets/_buildAppBar.dart';
 import 'package:repdun/widgets/aboutOwner.dart';
 import 'package:repdun/widgets/headText.dart';
@@ -63,7 +64,9 @@ class _RoomdetailsState extends State<Roomdetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: CustomAppBar(title: "Room Details"),
+      bottomNavigationBar: CustomBottomNavBar(selectedIndex:1),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
