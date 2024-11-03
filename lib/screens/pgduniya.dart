@@ -13,7 +13,8 @@ class Pgduniya extends StatefulWidget {
 }
 
 class _PgduniyaState extends State<Pgduniya> {
-  int _selectedIndex = 0; 
+  
+   
   int? selectedTileIndex;
   int? _selectedButtonIndex; 
   int ? profind;
@@ -32,7 +33,7 @@ class _PgduniyaState extends State<Pgduniya> {
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+    
     });
   }
 
