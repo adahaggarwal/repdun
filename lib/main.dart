@@ -30,50 +30,18 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  Widget _getSelectedScreen() {
-    switch (_selectedIndex) {
-      case 0:
-        return Home(); // Home Screen
-      case 1:
-        return Center(child: Text('Category'));
-      case 2:
-        return Center(child: Text('My Stays'));
-      case 3:
-        return Center(child: Text('Appointments'));
-      case 4:
-        return Center(child: Text('Profile'));
-      default:
-        return Home();
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: widget.title), 
-      body: _getSelectedScreen(),
-      bottomNavigationBar: CustomBottomNavBar(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
-      ),
+      appBar: CustomAppBar(title: title),
+      body: Home(), 
+      bottomNavigationBar: CustomBottomNavBar(selectedIndex: 0),
     );
   }
 }
+

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:repdun/constants/color.dart';
 import 'package:repdun/screens/appointments.dart';
 import 'package:repdun/widgets/_buildAppBar.dart';
+import 'package:repdun/widgets/aboutOwner.dart';
 import 'package:repdun/widgets/headText.dart';
 import 'package:repdun/widgets/outlinedbtn.dart';
+import 'package:repdun/widgets/pgdetails.dart';
 import 'package:repdun/widgets/slotbtn.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -46,7 +48,7 @@ class _RoomdetailsState extends State<Roomdetails> {
 
   void showToast() {
     Fluttertoast.showToast(
-      msg: "Please Choose a slot",
+      msg: "Please Choose a slot and date",
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,
     );
@@ -82,6 +84,9 @@ class _RoomdetailsState extends State<Roomdetails> {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 16),
+              Pgdetails(pgname: "SRI SAI",
+               pgloc: "Patliputra", 
+               owneravail: "Owner Available- 10:00 AM-23:55 PM" ),
               Text(
                 'Rating: ${widget.rating}',
                 style: TextStyle(fontSize: 16),
@@ -109,40 +114,7 @@ class _RoomdetailsState extends State<Roomdetails> {
               SizedBox(height: 25),
               Headtext(text: "About Owner"),
               SizedBox(height: 15),
-              Container(
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.grey),
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text("Name:"),
-                        Spacer(),
-                        Text("Vishal Dubey")
-                      ],
-                    ),
-                    SizedBox(height: 15),
-                    Row(
-                      children: [
-                        Text("Age:"),
-                        Spacer(),
-                        Text("40")
-                      ],
-                    ),
-                    SizedBox(height: 15),
-                    Row(
-                      children: [
-                        Text("Occupation:"),
-                        Spacer(),
-                        Text("Property Dealer")
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              Aboutowner(oname: "Vishal Dubey", oage: "40", occ: "Property Dealer"),
               SizedBox(height: 20),
               Container(
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
@@ -278,7 +250,13 @@ class _RoomdetailsState extends State<Roomdetails> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Appointments()),
+                      MaterialPageRoute(
+                        builder: (context) => Appointments(
+                          selectedDate: selectedDate!,
+                          selectedTime: selSlot!,
+                          imageAsset: widget.imageAsset,
+                        ),
+                      ),
                     );
                   },
                 ),

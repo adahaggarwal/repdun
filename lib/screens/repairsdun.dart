@@ -273,7 +273,7 @@ class _StaysState extends State<Repairsdun> {
         ),
         bottomNavigationBar: CustomBottomNavBar(
           selectedIndex: _selectedIndex,
-          onItemTapped: _onItemTapped,
+
         ),
       ),
     );

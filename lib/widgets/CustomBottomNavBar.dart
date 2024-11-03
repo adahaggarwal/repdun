@@ -1,40 +1,61 @@
 import 'package:flutter/material.dart';
+import 'package:repdun/screens/discover.dart';
+import 'package:repdun/screens/home.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   final int selectedIndex;
-  final Function(int) onItemTapped;
 
   const CustomBottomNavBar({
     Key? key,
     required this.selectedIndex,
-    required this.onItemTapped,
   }) : super(key: key);
+
+  void _navigateToPage(BuildContext context, int index) {
+    Widget destination;
+
+    switch (index) {
+      case 0:
+        destination = Home();
+        break;
+      case 1:
+        destination = Discover();
+        break;
+   
+      default:
+        return;
+    }
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => destination),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: selectedIndex,
-      onTap: onItemTapped,
+      onTap: (index) => _navigateToPage(context, index),
       backgroundColor: Colors.white,
-      items: const <BottomNavigationBarItem>[
+      items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
+          icon: ImageIcon(AssetImage('assets/btmNavIcons/homeicon.png')),
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.category),
+          icon: ImageIcon(AssetImage('assets/btmNavIcons/category.png')),
           label: 'Category',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.holiday_village),
+          icon: ImageIcon(AssetImage('assets/btmNavIcons/mystays.png')),
           label: 'My Stays',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.book),
+          icon: ImageIcon(AssetImage('assets/btmNavIcons/appoint.png')),
           label: 'Appointment',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.person),
+          icon: Icon(Icons.person_2_outlined),
           label: 'Profile',
         ),
       ],

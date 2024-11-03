@@ -15,13 +15,13 @@ class Discover extends StatefulWidget {
 }
 
 class _DiscoverState extends State<Discover> {
-  int _selectedIndex = 0; // For the Bottom Navigation Bar
+  
   int? selectedTileIndex;
   double _currentSliderValue = 5000; // Initialize with a default value
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+    
     });
   }
 
@@ -165,8 +165,8 @@ class _DiscoverState extends State<Discover> {
           ),
         ),
         bottomNavigationBar: CustomBottomNavBar(
-          selectedIndex: _selectedIndex,
-          onItemTapped: _onItemTapped,
+          selectedIndex: 1
+      
         ),
       ),
     );
@@ -176,7 +176,7 @@ class _DiscoverState extends State<Discover> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        double _sliderValue = _currentSliderValue; // Use local variable for the slider
+        double _sliderValue = _currentSliderValue; 
 
         return StatefulBuilder(
           builder: (context, setState) {

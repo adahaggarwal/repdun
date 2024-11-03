@@ -110,7 +110,7 @@ class _PgduniyaState extends State<Pgresults> {
         ),
         bottomNavigationBar: CustomBottomNavBar(
           selectedIndex: _selectedIndex,
-          onItemTapped: _onItemTapped,
+  
         ),
       ),
     );

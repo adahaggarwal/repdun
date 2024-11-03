@@ -217,7 +217,7 @@ class _StaysState extends State<Stays> {
         ),
         bottomNavigationBar: CustomBottomNavBar(
           selectedIndex: _selectedIndex,
-          onItemTapped: _onItemTapped,
+  
         ),
       ),
     );
