@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:repdun/constants/color.dart';
 import 'package:repdun/screens/pgduniya.dart';
 import 'package:repdun/screens/repairsdun.dart';
+import 'package:repdun/widgets/CustomBottomNavBar.dart';
+import 'package:repdun/widgets/_buildAppBar.dart';
 
 
 
@@ -19,7 +21,9 @@ class Home extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        
+        bottomNavigationBar: CustomBottomNavBar(selectedIndex: 0),
+
+        appBar: CustomAppBar(title: "Repairs Duniya"),
         body: SingleChildScrollView(
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 20),
@@ -323,6 +327,7 @@ class Home extends StatelessWidget {
             ),
           ),
         ),
+        
       ),
     );
   }
