@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:repdun/screens/appointments.dart';
+import 'package:repdun/screens/screen9.dart';
 
-import 'package:repdun/screens/home.dart';
-import 'package:repdun/screens/pgduniya.dart';
+import 'package:repdun/screens/screen1.dart';
+import 'package:repdun/screens/screen3.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   final int selectedIndex;
