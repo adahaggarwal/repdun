@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:repdun/screens/home.dart';
+import 'package:repdun/screens/screen1.dart';
 
 
 void main() {

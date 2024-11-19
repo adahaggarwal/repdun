@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:repdun/constants/color.dart';
-import 'package:repdun/screens/pgduniya.dart';
+import 'package:repdun/screens/screen3.dart';
 import 'package:repdun/screens/repairsdun.dart';
 import 'package:repdun/widgets/CustomBottomNavBar.dart';
 import 'package:repdun/widgets/_buildAppBar.dart';
@@ -11,7 +11,7 @@ import 'package:repdun/widgets/_buildAppBar.dart';
 
 
 
-import 'stays.dart';
+import 'screen2.dart';
 
 class Home extends StatelessWidget {
   Home({Key? key}) : super(key: key);

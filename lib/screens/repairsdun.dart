@@ -245,8 +245,8 @@ class _StaysState extends State<Repairsdun> {
                             onPressed: () {},
                             child: Text("Shop Now",
                             style: TextStyle(
-                              color: Colors.white, // Set the text color to white
-                              fontWeight: FontWeight.bold, // Make the text bold
+                              color: Colors.white, 
+                              fontWeight: FontWeight.bold, 
                             ),),
                             style: ElevatedButton.styleFrom(
                               padding: EdgeInsets.symmetric(horizontal: 40),
@@ -279,23 +279,6 @@ class _StaysState extends State<Repairsdun> {
     );
   }
 
-  Widget _buildIconWithBackground(IconData icon) {
-    return Padding(
-      padding: const EdgeInsets.all(3.0), // Adds margin around the circular background
-      child: Material(
-        shape: CircleBorder(),
-        elevation: 3,
-        color: Colors.white, // Background color
-        child: Padding(
-          padding: const EdgeInsets.all(8.0), // Adjusts the size of the circle
-          child: Icon(
-            icon,
-            color: Colors.black, // Icon color
-          ),
-        ),
-      ),
-    );
-  }
 
   Widget buildExpertCard(String imagePath, Color backgroundColor) {
     return Container(

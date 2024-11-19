@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:repdun/screens/roomDetails.dart';
+import 'package:repdun/screens/screen8.dart';
 
 class RoomCard extends StatelessWidget {
   final String imageAsset;

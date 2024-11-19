@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:repdun/constants/color.dart';
-import 'package:repdun/screens/discover.dart';
+import 'package:repdun/screens/screen5.dart';
 import 'package:repdun/widgets/CustomBottomNavBar.dart';
 import 'package:repdun/widgets/_buildAppBar.dart';
 import 'package:repdun/widgets/outlinedbtn.dart'; 

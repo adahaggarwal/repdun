@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:repdun/screens/filters.dart';
+import 'package:repdun/screens/screen7.dart';
 //import 'package:repdun/constants/color.dart';
 import 'package:repdun/widgets/CustomBottomNavBar.dart';
 import 'package:repdun/widgets/_buildAppBar.dart';
@@ -17,12 +17,12 @@ class Pgresults extends StatefulWidget {
 }
 
 class _PgduniyaState extends State<Pgresults> {
-  int _selectedIndex = 0;
+ 
   int? selectedTileIndex;
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+  
     });
   }
 
