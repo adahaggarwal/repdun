@@ -3,15 +3,21 @@ import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
+  final double ?fontSize;
+  final Icon? firsticon;
 
-  const CustomAppBar({Key? key, required this.title}) : super(key: key);
+  const CustomAppBar({Key? key,
+   required this.title,
+   this.fontSize = 18.0,
+   this.firsticon 
+   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
-      leading: Icon(Icons.menu, color: Colors.black),
+      leading: firsticon,
       actions: [
         
         SizedBox(width: 1),
@@ -23,7 +29,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         title,
         style: TextStyle(
           color: Colors.black,
-          fontSize: 20,
+          fontSize: fontSize,
           fontWeight: FontWeight.bold,
         ),
       ),

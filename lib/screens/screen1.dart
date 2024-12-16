@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:repdun/constants/color.dart';
+import 'package:repdun/screens/commercialDuniya.dart';
+import 'package:repdun/screens/house_flat.dart';
 import 'package:repdun/screens/screen3.dart';
 import 'package:repdun/screens/repairsdun.dart';
 import 'package:repdun/widgets/CustomBottomNavBar.dart';
@@ -23,7 +25,7 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.white,
         bottomNavigationBar: CustomBottomNavBar(selectedIndex: 0),
 
-        appBar: CustomAppBar(title: "Repairs Duniya"),
+        appBar: CustomAppBar(title: "Repairs Duniya", firsticon: Icon(Icons.menu)),
         body: SingleChildScrollView(
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 20),
@@ -271,15 +273,20 @@ class Home extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        height: 90,
-                        width: 100,
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: bb,
-                          borderRadius: BorderRadius.circular(20)
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>HouseFlat()));
+                        },
+                        child: Container(
+                          height: 90,
+                          width: 100,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: bb,
+                            borderRadius: BorderRadius.circular(20)
+                          ),
+                          child: Image.asset('assets/images/hrent.png'),
                         ),
-                        child: Image.asset('assets/images/hrent.png'),
                       ),
                       GestureDetector(
                         onTap: (){
@@ -297,15 +304,22 @@ class Home extends StatelessWidget {
                           child: Image.asset('assets/images/pg.png'),
                         ),
                       ),
-                      Container(
-                        height: 90,
-                        width: 100,
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: lred,
-                          borderRadius: BorderRadius.circular(20)
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.push(context,MaterialPageRoute(builder: (context)=>Commercialduniya()));
+
+                          
+                        },
+                        child: Container(
+                          height: 90,
+                          width: 100,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: lred,
+                            borderRadius: BorderRadius.circular(20)
+                          ),
+                          child: Image.asset('assets/images/comm.png'),
                         ),
-                        child: Image.asset('assets/images/comm.png'),
                       )
                     ],
                   ),

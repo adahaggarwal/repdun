@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:repdun/constants/color.dart';
+import 'package:repdun/screens/commercialDuniya.dart';
+import 'package:repdun/screens/hotels.dart';
+import 'package:repdun/screens/house_flat.dart';
 import 'package:repdun/screens/screen3.dart';
 import 'package:repdun/widgets/CustomBottomNavBar.dart';
 import 'package:repdun/widgets/_buildAppBar.dart';
@@ -109,15 +112,20 @@ class _StaysState extends State<Stays> {
                         SizedBox(height: 25,),
                         Text("PG"),
                         SizedBox(height: 25,),
-                        Container(
-                          height: 140,
-                          width: 160,
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: lred,
-                            borderRadius: BorderRadius.circular(20)
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => Commercialduniya()));
+                          },
+                          child: Container(
+                            height: 140,
+                            width: 160,
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: lred,
+                              borderRadius: BorderRadius.circular(20)
+                            ),
+                            child: Image.asset('assets/images/comm.png'),
                           ),
-                          child: Image.asset('assets/images/comm.png'),
                         ),
                         SizedBox(height: 25,),
                         Text("Commercial"),
@@ -125,28 +133,38 @@ class _StaysState extends State<Stays> {
                     ),
                     Column(
                       children: [
-                        Container(
-                          height: 140,
-                          width: 160,
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: bb,
-                            borderRadius: BorderRadius.circular(20)
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>HouseFlat()));
+                          },
+                          child: Container(
+                            height: 140,
+                            width: 160,
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: bb,
+                              borderRadius: BorderRadius.circular(20)
+                            ),
+                            child: Image.asset('assets/images/hrent.png'),
                           ),
-                          child: Image.asset('assets/images/hrent.png'),
                         ),
                         SizedBox(height: 25,),
                         Text("House/Flat Rent"),
                         SizedBox(height: 25,),
-                        Container(
-                          height: 140,
-                          width: 160,
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: yy,
-                            borderRadius: BorderRadius.circular(20)
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Hotels()));
+                          },
+                          child: Container(
+                            height: 140,
+                            width: 160,
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: yy,
+                              borderRadius: BorderRadius.circular(20)
+                            ),
+                            child: Image.asset('assets/images/hotel.png'),
                           ),
-                          child: Image.asset('assets/images/hotel.png'),
                         ),
                         SizedBox(height: 25,),
                         Text("Hotel"),
